@@ -1,0 +1,11 @@
+[Unit]
+Description=Run journal-brief with config /etc/journal-brief/%i.yml
+
+[Service]
+ExecStart=journal-brief --conf /etc/journal-brief/%i.yml
+Type=oneshot
+User=root
+Group=systemd-journal
+DynamicUser=True
+# Assume and (enforce) `cursor-file´ to match the config file name
+ReadWritePaths=/var/lib/journal-brief/%i
